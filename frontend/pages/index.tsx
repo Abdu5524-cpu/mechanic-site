@@ -4,7 +4,9 @@ export default function Home() {
   useEffect(() => {
     console.log("Component mounted"); // Step 6 log
 
-    fetch('http://localhost:3000/api/ping')
+    //fetch('http://localhost:3000/api/ping')
+    fetch("https://resume-backend.onrender.com/api/something")
+
       .then(res => res.json())
       .then(data => {console.log('API response:', data); //step 6 log
       }) // Step 6 log

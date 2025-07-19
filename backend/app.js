@@ -1,17 +1,28 @@
 const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
-
 const app = express();
-app.use(cors());
-app.use(express.json());
 
-const cors = require('cors');
+// CORS configuration
+// Allow requests from specific origins
+const allowedOrigins = [
+  'http://localhost:3001',
+  'https://mechanic-frontend.onrender.com'
+];
 
 app.use(cors({
-  origin: 'https://mechanic-frontend.onrender.com', // allow only your frontend
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true
 }));
+
+app.use(express.json());
+
 
 const apiRoutes = require('./routes'); // assuming index.js in routes/
 app.use('/api', apiRoutes);
