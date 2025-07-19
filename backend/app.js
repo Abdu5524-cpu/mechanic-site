@@ -6,6 +6,13 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+const cors = require('cors');
+
+app.use(cors({
+  origin: 'https://mechanic-frontend.onrender.com', // allow only your frontend
+  credentials: true
+}));
+
 const apiRoutes = require('./routes'); // assuming index.js in routes/
 app.use('/api', apiRoutes);
 
