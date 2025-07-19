@@ -39,6 +39,9 @@ jobs:
         id: create_neon_branch
         uses: neondatabase/create-branch-action@v5
         with:
+          server: ${{ secrets.FTP_HOSTNAME }}
+          username: ${{ secrets.FTP_USERNAME }}    # <- REQUIRED input
+          password: ${{ secrets.FTP_PASSWORD }}    # <- REQUIRED input
           project_id: ${{ vars.NEON_PROJECT_ID }}
           branch_name: preview/pr-${{ github.event.number }}-${{ needs.setup.outputs.branch }}
           api_key: ${{ secrets.NEON_API_KEY }}
