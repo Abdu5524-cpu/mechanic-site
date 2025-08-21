@@ -1,5 +1,6 @@
 const express = require('express');
-const router = express.Router();
+const router = require('express').Router();
+
 
 router.get('/ping', (req, res) => {
   res.json({ message: 'pong' });

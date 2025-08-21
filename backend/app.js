@@ -1,7 +1,19 @@
 const express = require('express');
+const chatRoutes = require('./routes/chat'); // Import chat routes
 const cors = require('cors');
 require('dotenv').config();
+
+
 const app = express();
+app.use(express.json());
+app.use(cors());
+
+app.use('/api', chatRoutes);  // ✅ Now /api/chat works
+
+app.listen(3000, () => {
+  console.log('Server running on http://localhost:3000');
+});
+
 
 // CORS configuration
 // Allow requests from specific origins
